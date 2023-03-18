@@ -1,6 +1,7 @@
 # A test workflow, which seems to get good results sometimes.
 # (gwyneth 20220418)
 # See https://docs.microsoft.com/en-us/dotnet/devops/dotnet-test-github-action
+
 name: .NET
 
 on:
@@ -10,7 +11,6 @@ on:
     paths:
     - '**.cs'
     - '**.csproj'
-
 env:
     # We'll stick to net6.0, as 5.0 seems not to work as well as it should
     # - at least for testing purposes (gwyneth 20220418)
@@ -26,9 +26,9 @@ jobs:
         os: [ubuntu-latest]
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: Setup .NET
-      uses: actions/setup-dotnet@v1
+      uses: actions/setup-dotnet@v2
       with:
         dotnet-version: 6.0.x
     - name: Restore dependencies
@@ -39,4 +39,3 @@ jobs:
 # or, alternatively, set up a different account for testing purposes (gwyneth 20220418)
 #    - name: Test
 #      run: dotnet test --no-build --verbosity normal LibreMetaverse.ReleaseNoGui.sln
-
